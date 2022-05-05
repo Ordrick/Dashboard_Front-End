@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Growth</title>
+
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="bootstrap/jquery-2.2.4.min.js"></script>
+    <script src="bootstrap/jquery.appear.min.js"></script>
+    <script src="bootstrap/jquery.easypiechart.min.js"></script>
+</head>
+<body>
+    <section id="block" class="section">
+        <div class="b-skills">
+            <div class="container">
+                <h2>Business Growth</h2>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="skill-item center-block">
+                            <div class="chart-container">
+                                <div class="chart " data-percent="100" data-bar-color="#23afe3">
+                                    <span class="percent" data-after="%">100</span>
+                                </div>
+                            </div>
+                            <p>Sales</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="skill-item center-block">
+                            <div class="chart-container">
+                                <div class="chart " data-percent="78" data-bar-color="#a7d212">
+                                    <span class="percent" data-after="%">78</span>
+                                </div>
+                            </div>
+                            <p>Profit</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="skill-item center-block">
+                            <div class="chart-container">
+                                <div class="chart " data-percent="22" data-bar-color="#ff4241">
+                                    <span class="percent" data-after="%">22</span>
+                                </div>
+                            </div>
+                            <p>Loss</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="skill-item center-block">
+                            <div class="chart-container">
+                                <div class="chart " data-percent="88" data-bar-color="#edc214">
+                                    <span class="percent" data-after="%">88</span>
+                                </div>
+                            </div>
+                            <p>Customers Return</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="../Dashboard/dashboard.html" class="btn">Back to Dashboard</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        'use strict';
+
+        var $window = $(window);
+
+        function run()
+        {
+            var fName = arguments[0],
+                aArgs = Array.prototype.slice.call(arguments, 1);
+            try {
+                fName.apply(window, aArgs);
+            } catch(err) {
+                
+            }
+        };
+
+        function _chart ()
+        {
+            $('.b-skills').appear(function() {
+                setTimeout(function() {
+                    $('.chart').easyPieChart({
+                        easing: 'easeOutElastic',
+                        delay: 3000,
+                        barColor: '#369670',
+                        trackColor: '#fff',
+                        scaleColor: false,
+                        lineWidth: 21,
+                        trackWidth: 21,
+                        size: 250,
+                        lineCap: 'round',
+                        onStep: function(from, to, percent) {
+                            this.el.children[0].innerHTML = Math.round(percent);
+                        }
+                    });
+                }, 150);
+            });
+        };
+
+        $(document).ready(function() {
+        
+            run(_chart);
+        
+            
+        });
+    </script>
+</body>
+</html>
